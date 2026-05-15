@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Frame Extractor Wow6</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body { 
+            display: flex; 
+            flex-direction: column;
+            margin: 0;
+            background-color: #111111;
+            padding-top: 70px;
+            min-height: 100dvh; /* Garante que o corpo tenha no mínimo a altura da tela */
+        }
+
+        pre { background: #eee; padding: 10px; }
+        header {
+            background-color: rgb(116, 116, 116);
+            position: fixed;    
+            top: 0;             
+            left: 0;            
+            width: 100%;        
+            padding: 15px 20px; 
+            display: flex;      
+            align-items: center;
+            z-index: 1000;      
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            flex: 1; /* Faz o conteúdo principal esticar e ocupar todo o espaço vertical restante */
+        }
+
+        #btn {
+            align-self: flex-start;
+            padding: 5px 15px;
+            height: 50px;
+            font-size: 20px;
+        }
+        #pau {
+            height: 30px;
+            width: 300px;
+        }
+        #btnload {
+            position: relative;
+            left: 20px;
+            width: 60px;
+            height: 30px;
+        }
+        
+        #subject {
+            width: 50vw;
+            height: 40vh;
+        }
+        #resultado {
+            width: 100%;
+            height: 350px; 
+            max-width: auto; 
+            background-color: #1e1e1e; 
+            color: #ffffff; 
+            font-family: monospace; 
+            padding: 10px; 
+            resize: none; 
+            overflow-y: scroll;
+        }
+        .buto {
+            background-color: #333;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            flex: 1; /* Faz o conteúdo principal esticar e ocupar todo o espaço vertical restante */
+            
+        }
+        .info {
+            position: relative;
+            display: flex;
+            color: #fff;
+        }
+        .topthings {
+            display: flex;       /* Alinha os filhos em linha */
+            align-items: center; /* Centraliza verticalmente o vídeo e o texto */
+            gap: 15px;           /* Cria um espaço/espaçamento entre o vídeo e o texto */
+            font-size: 40px;
+            height: auto;
+        }
+        #curtime {
+            top: 0%;
+            position: relative;
+            left: 30%;
+        }
+        #exfrom, #exto {
+            position: relative;
+            width: 100px;
+            height: 40px;
+            font-size: 25px;
+        }
+        .extractbuttons {
+            display: flex;       /* Alinha os filhos em linha */
+            align-items: center; /* Centraliza verticalmente o vídeo e o texto */
+            gap: 15px;           /* Cria um espaço/espaçamento entre o vídeo e o texto */
+            color: #eee;
+            font-size: 30px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <select name="Video" id="pau"></select>
+        <button id="btnload">Load</button>
+    </header>
+
+    <main class="main-content">
+        <div class="topthings">
+            <video autoplay="true" src="" id="subject" controls></video>
+            <div class="info"> 
+                <p id="curtime">curTime</p>
+            </div>
+        </div>
+        <div class="buto">
+            <div class="extractbuttons">
+                <button id="btn">Extract</button>
+                <p>From</p>
+                <input type="From" id="exfrom">
+                <p>To</p>
+                <input type="To" id="exto">
+                <p id="outtext">Output: ./None</p>
+            </div>
+            <!-- <pre id="resultado">Waiting...</pre> -->
+            <textarea 
+            id="resultado" 
+            readonly 
+            rows="100">
+            </textarea>
+        </div>
+    </main>
+
+    <script src="renderer.js"></script>
+
+    <script>
+// 1. Seleciona a tag <video> corretamente
+const video = document.querySelector('video');
+
+video.addEventListener('timeupdate', (event) => {
+    // 2. Usa video.currentTime (ou event.target.currentTime) para pegar o tempo do vídeo em segundos
+    document.getElementById("curtime").innerText = video.currentTime.toFixed(0);
+});
+    </script>
+</body>
+</html>
