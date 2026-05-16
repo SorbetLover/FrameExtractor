@@ -14,8 +14,10 @@
             flex-direction: column;
             margin: 0;
             background-color: #111111;
-            padding-top: 70px;
-            min-height: 100dvh; /* Garante que o corpo tenha no mínimo a altura da tela */
+            padding-top: 30px;
+            min-height: 100dvh; 
+            overflow-x: hidden;
+            overflow-y: hidden;
         }
 
         pre { background: #eee; padding: 10px; }
@@ -25,7 +27,7 @@
             top: 0;             
             left: 0;            
             width: 100%;        
-            padding: 15px 20px; 
+            padding: 5px 20px; 
             display: flex;      
             align-items: center;
             z-index: 1000;      
@@ -35,13 +37,14 @@
             flex-direction: column;
             gap: 15px;
             padding: 20px;
-            flex: 1; /* Faz o conteúdo principal esticar e ocupar todo o espaço vertical restante */
+            flex: 1; 
         }
 
         #btn {
             align-self: flex-start;
             padding: 5px 15px;
-            height: 50px;
+            height: 9vh;
+            max-height: 40px;
             font-size: 20px;
         }
         #pau {
@@ -61,7 +64,7 @@
         }
         #resultado {
             width: 100%;
-            height: 350px; 
+            height: 40vh; 
             max-width: auto; 
             background-color: #1e1e1e; 
             color: #ffffff; 
@@ -76,45 +79,68 @@
             flex-direction: column;
             gap: 15px;
             padding: 20px;
-            flex: 1; /* Faz o conteúdo principal esticar e ocupar todo o espaço vertical restante */
+            flex: 1; 
             
         }
         .info {
             position: relative;
+            background-color: #444;
+            width: 50vw;
+            height: 40vh;
+            min-height: 50%;
+            max-height: 50%;
             display: flex;
+            align-items: center;
             color: #fff;
         }
         .topthings {
-            display: flex;       /* Alinha os filhos em linha */
-            align-items: center; /* Centraliza verticalmente o vídeo e o texto */
-            gap: 15px;           /* Cria um espaço/espaçamento entre o vídeo e o texto */
+            display: flex;       
+            align-items: center; 
+            gap: 15px;           
             font-size: 40px;
             height: auto;
         }
-        #curtime {
-            position: fixed;
-            right: 40%;
-            top: 30%;
+        .bts{
+            display: grid;
+            place-items: center;
         }
+
         #exfrom, #exto {
             position: relative;
             width: 100px;
-            height: 40px;
+            top: 5px;
+            height: 4vh;
             font-size: 25px;
         }
         .extractbuttons {
-            display: flex;       /* Alinha os filhos em linha */
-            align-items: center; /* Centraliza verticalmente o vídeo e o texto */
-            gap: 15px;           /* Cria um espaço/espaçamento entre o vídeo e o texto */
+            display: flex;       
+            align-items: center; 
+            gap: 15px;          
             color: #eee;
             font-size: 30px;
-            height: auto;
+            height: 30px;
         }
-        #anitta{
+
+
+        #anitta {
+            height: 25vh;
+            position: absolute; 
+            right: 5%;           
+        }
+        #insrange, #insbutton{
+            width: 60px;
+            height: 5dvh;
+            max-height: 30px;
+            top: 4px;
             position: relative;
-            left: 400px;
-            width: 60%;
         }
+
+        #curtime {
+            position: absolute;
+            top:50%;
+            left: 10%;
+        }
+
     </style>
 </head>
 <body>
@@ -128,7 +154,7 @@
         <div class="topthings">
             <video autoplay="true" src="" id="subject" controls></video>
             <div class="info"> 
-                <p id="curtime">curTime</p>
+                <p id="curtime">0</p>
                 <img src="anitta.jpg" id="anitta">
             </div>
         </div>
@@ -136,10 +162,19 @@
             <div class="extractbuttons">
                 <button id="btn">Extract</button>
                 <p>From</p>
-                <input type="From" id="exfrom">
+                    <div class="bts">
+                        <input type="From" id="exfrom">
+                        <!-- <input type="button" name="insert" id="insbutton"> -->
+                        <button id="insbutton">Insert</button>
+                    </div>
                 <p>To</p>
-                <input type="To" id="exto">
+                    <div class="bts">
+                        <input type="To" id="exto">
+                        <input type="number" name="range" id="insrange">
+                    </div>
                 <p id="outtext">Output: ./None</p>
+            </div>
+            <div class="extractbuttons2">
             </div>
             <!-- <pre id="resultado">Waiting...</pre> -->
             <textarea 
@@ -153,13 +188,30 @@
     <script src="renderer.js"></script>
 
     <script>
-// 1. Seleciona a tag <video> corretamente
-const video = document.querySelector('video');
+            const video = document.querySelector('video');
 
-video.addEventListener('timeupdate', (event) => {
-    // 2. Usa video.currentTime (ou event.target.currentTime) para pegar o tempo do vídeo em segundos
-    document.getElementById("curtime").innerText = video.currentTime.toFixed(0);
-});
+            video.addEventListener('timeupdate', (event) => {
+                document.getElementById("curtime").innerText = video.currentTime.toFixed(0);
+            });
+            
+            document.getElementById("insbutton").addEventListener('click', (event) => {
+                document.getElementById("exfrom").value = video.currentTime.toFixed(0);
+                document.getElementById("exto").value = parseInt(video.currentTime.toFixed(0)) + parseInt(document.getElementById("insrange").value);
+                
+            })
+            const numberInput = document.getElementById('insrange'); // Or your input ID
+
+    numberInput.addEventListener('wheel', function(event) {
+        event.preventDefault();
+        let currentValue = parseInt(this.value) || 0;
+        let step = parseInt(this.step) || 1;
+        if (event.deltaY < 0) {
+            this.value = currentValue + step; // Scroll Up = Increase
+        } else {
+            this.value = currentValue - step; // Scroll Down = Decrease
+        }
+        this.dispatchEvent(new Event('input'));
+    }, { passive: false }); 
     </script>
 </body>
 </html>

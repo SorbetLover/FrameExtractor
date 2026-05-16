@@ -2,7 +2,6 @@ const { ipcRenderer, ipcMain } = require('electron');
 
 
 document.getElementById('btn').addEventListener('click', () => {
-    document.getElementById("resultado").value = "";
     ipcRenderer.send("extractframes", document.getElementById("pau").value, document.getElementById("exfrom").value, document.getElementById("exto").value) 
 });
 document.getElementById("btnload").addEventListener("click", () =>{
