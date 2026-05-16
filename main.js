@@ -50,7 +50,7 @@ ipcMain.on("extractframes", (event, videoe, frome, toe) => {
   
   const inputPath = path.resolve(__dirname, "input", videoe);
   const outputDir = path.resolve(__dirname, "output", folderName);
-  const outputPath = path.join(outputDir, "frame_%04d.jpg");
+  const outputPath = path.join(outputDir, "f" + frome + "t" + toe + "_frame_%04d.jpg");
 
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
