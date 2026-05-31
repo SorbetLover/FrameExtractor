@@ -44,6 +44,8 @@
             align-self: flex-start;
             padding: 5px 15px;
             height: 9vh;
+            top: 30%;
+            position: relative;
             max-height: 40px;
             font-size: 20px;
         }
@@ -59,12 +61,13 @@
         }
         
         #subject {
-            width: 50vw;
-            height: 40vh;
+            width: 70vw;
+            height: 50vh;
         }
         #resultado {
             width: 100%;
-            height: 40vh; 
+            bottom: 25px;
+            height: 10vh; 
             max-width: auto; 
             background-color: #1e1e1e; 
             color: #ffffff; 
@@ -118,7 +121,8 @@
             gap: 15px;          
             color: #eee;
             font-size: 30px;
-            height: 30px;
+            background-color: #1e1e1e;
+            height: 110px;
         }
 
 
@@ -140,14 +144,43 @@
             top:50%;
             left: 10%;
         }
+        .topbtn {
+            display: flex;       
+            align-items: center; 
+            gap: 20px;          
+            color: #eee;
 
+        }
+        #cb, #cb2, #cbn, #cb3 {
+            position: relative;
+            left: 20px;
+            font-size: 25px;
+        }
+        #cbn {
+            left: 30px;
+        }
+        input[type="checkbox"] {
+            transform: scale(2);
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <select name="Video" id="pau"></select>
-        <button id="btnload">Load</button>
+        <div class="topbtn">
+            <select name="Video" id="pau"></select>
+            <button id="btnload">Load</button>
+            <div>
+                <input type="checkbox" name="useoldnaming" id="cb"><label for="useoldnaming" id="cbn">Old Naming</label>
+            </div>
+            <div>
+                <input type="checkbox" name="useoldnaming" id="cb2"><label for="useoldnaming" id="cbn">Cut Video</label>
+            </div>
+            <div>
+                <input type="checkbox" name="useoldnaming" id="cb3"><label for="useoldnaming" id="cbn">PNG</label>
+            </div>
+        </div>
+
     </header>
 
     <main class="main-content">
@@ -160,6 +193,7 @@
         </div>
         <div class="buto">
             <div class="extractbuttons">
+                <p><p></p></p>
                 <button id="btn">Extract</button>
                 <p>From</p>
                     <div class="bts">
@@ -174,8 +208,12 @@
                     </div>
                 <p id="outtext">Output: ./None</p>
             </div>
-            <div class="extractbuttons2">
-            </div>
+            
+            <!-- <div class="extractbuttons">
+                <p></p>
+                <input type="checkbox" name="useoldnaming" id="cb"><label for="useoldnaming">Old Naming</label>
+                <input type="checkbox" name="" id="cb"><label for="useoldnaming">Old Naming</label>
+            </div> -->
             <!-- <pre id="resultado">Waiting...</pre> -->
             <textarea 
             id="resultado" 

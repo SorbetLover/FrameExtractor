@@ -2,8 +2,17 @@ const { ipcRenderer, ipcMain } = require('electron');
 
 
 document.getElementById('btn').addEventListener('click', () => {
+    console.log(document.getElementById("cb").checked + " and " + document.getElementById("cb3").checked) 
     document.getElementById("resultado").value = "";
-    ipcRenderer.send("extractframes", document.getElementById("pau").value, document.getElementById("exfrom").value, document.getElementById("exto").value) 
+    ipcRenderer.send("extractframes", 
+        document.getElementById("pau").value, 
+        document.getElementById("exfrom").value, 
+        document.getElementById("exto").value, 
+        document.getElementById("cb").checked, 
+        document.getElementById("cb3").checked,
+        document.getElementById("cb2").checked
+    );
+
 });
 document.getElementById("btnload").addEventListener("click", () =>{
     ipcRenderer.send("makeFolder", document.getElementById("pau").value.replace(".mp4", ""));
