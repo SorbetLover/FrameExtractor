@@ -11,6 +11,7 @@
         }
         body { 
             display: flex; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             flex-direction: column;
             margin: 0;
             background-color: #111111;
@@ -51,7 +52,12 @@
         }
         #pau {
             height: 30px;
-            width: 300px;
+            width: 250px;
+        }
+        #fromyt {
+            height: 30px;
+            width: 100px;
+            position: relative;
         }
         #btnload {
             position: relative;
@@ -169,6 +175,7 @@
     <header>
         <div class="topbtn">
             <select name="Video" id="pau"></select>
+            <input type="text" id="fromyt" value="">
             <button id="btnload">Load</button>
             <div>
                 <input type="checkbox" name="useoldnaming" id="cb"><label for="useoldnaming" id="cbn">Old Naming</label>
@@ -204,7 +211,7 @@
                 <p>To</p>
                     <div class="bts">
                         <input type="To" id="exto">
-                        <input type="number" name="range" id="insrange">
+                        <input type="number" name="range" id="insrange" min="0" >
                     </div>
                 <p id="outtext">Output: ./None</p>
             </div>
@@ -246,6 +253,7 @@
         if (event.deltaY < 0) {
             this.value = currentValue + step; // Scroll Up = Increase
         } else {
+            if(this.value == 0) return;
             this.value = currentValue - step; // Scroll Down = Decrease
         }
         this.dispatchEvent(new Event('input'));
