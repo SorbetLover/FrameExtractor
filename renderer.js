@@ -20,6 +20,7 @@ document.getElementById("btnload").addEventListener("click", () =>{
     if(document.getElementById("fromyt").value != null && document.getElementById("fromyt").value !== ""){
         ipcRenderer.send("fromyt", document.getElementById("fromyt").value)
         document.getElementById("fromyt").value = "";
+        alert("Wait a minute until the video is downloaded, it will be loaded automatically.")
     } else {
         ipcRenderer.send("makeFolder", document.getElementById("pau").value.replace(".mp4", ""));
         document.getElementById("subject").src = "./input/" + document.getElementById("pau").value;
@@ -34,15 +35,15 @@ ipcRenderer.on("fromyt", (event, msg) => {
     document.getElementById("subject").src = "./input/" + msg;
     document.getElementById("outtext").innerText = "Output: ./" + path.parse(msg).name; 
     // let theop = 0;
-    // let theii = document.getElementById("pau").options.length - 1
-    // for(let i = theii; i >= 0; i--){
-    //     if(document.getElementById("pau").options[i].value == path.parse(msg).name){
-    //         // theop = i;
-    //         document.getElementById("pau").selectedIndex = i;
-    //         break;
-    //     } 
-    // }
-    // document.getElementById("pau").value = "AAAAA";
+        // let theii = document.getElementById("pau").options.length - 1
+        // for(let i = theii; i >= 0; i--){
+        //     if(document.getElementById("pau").options[i].value == path.parse(msg).name){
+        //         // theop = i;
+        //         document.getElementById("pau").selectedIndex = i;
+        //         break;
+        //     } 
+        // }
+        // document.getElementById("pau").value = "AAAAA";
 
 
 })
@@ -70,15 +71,15 @@ ipcRenderer.on("extractframes-progress", (event, texx) => {
   document.getElementById("resultado").scrollTop = document.getElementById("resultado").scrollHeight;
 })
 // dialog.showMessageBox(window,{
-//     type: "warning",
-//     buttons: ["Ok"],
-//     defaultId: 0,
-//     cancelId: 0,
-//     title: "Install ffmpeg",
-//     message: "You dont have it",
-//     detail: "."
-// });
+        //     type: "warning",
+        //     buttons: ["Ok"],
+        //     defaultId: 0,
+        //     cancelId: 0,
+        //     title: "Install ffmpeg",
+        //     message: "You dont have it",
+        //     detail: "."
+        // });
 
-// if(!fs.existsSync("ffmpeg.exe") && process.platform == "win32"){
-//     alert("Install ffmpeg.exe in the root folder");
-// }
+        // if(!fs.existsSync("ffmpeg.exe") && process.platform == "win32"){
+        //     alert("Install ffmpeg.exe in the root folder");
+        // }

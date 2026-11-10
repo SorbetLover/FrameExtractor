@@ -102,7 +102,7 @@ ipcMain.on(
 
                     outputPath = path.join(
                         outputDir,
-                        "frame_%04d" + "from_" + frome + "_until_" + toe +
+                        "from_" + frome + "_until_" + toe + "frame_%04d" + 
                         theextension,
                     );
             }
@@ -138,7 +138,8 @@ ipcMain.on(
 
 ipcMain.on("fromyt", (event, link) => {
     console.log("\n\n ...")
-    const namething = spawn((process.platform == "win32" ? "./" : "") + 'yt-dlp' + (process.platform == "win32" ? ".exe" : ""), ['--print', "%(title)s.%(ext)s", link]);   
+    // const namething = spawn((process.platform == "win32" ? "./" : "") + 'yt-dlp' + (process.platform == "win32" ? ".exe" : ""), ['--print', "%(title)s.%(ext)s", link]);   
+    const namething = spawn('yt-dlp' + (process.platform == "win32" ? ".exe" : ""), ['--print', "%(title)s.%(ext)s", link]);   
     let vname = ""
     namething.stdout.on('data', (data) => {
         console.log(data.toString());
@@ -152,7 +153,7 @@ ipcMain.on("fromyt", (event, link) => {
 
     console.log(link);
 
-    const ytdlp = spawn((process.platform == "win32" ? "./" : "") + "yt-dlp" + (process.platform == "win32" ? ".exe" : ""), [link, "-P", "./input/", "-o", "%(title)s.%(ext)s"]);
+    const ytdlp = spawn("yt-dlp" + (process.platform == "win32" ? ".exe" : ""), [link, "-P", "./input/", "-o", "%(title)s.%(ext)s"]);
     ytdlp.on("close", (code) => {
         if(code != 0){
             console.log(code);

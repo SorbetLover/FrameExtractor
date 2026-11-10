@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Frame Extractor Wowzers</title>
@@ -9,36 +10,42 @@
             padding: 0;
             box-sizing: border-box;
         }
-        body { 
-            display: flex; 
+
+        body {
+            display: flex;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             flex-direction: column;
             margin: 0;
             background-color: #111111;
             padding-top: 30px;
-            min-height: 100dvh; 
+            min-height: 100dvh;
             overflow-x: hidden;
             overflow-y: hidden;
         }
 
-        pre { background: #eee; padding: 10px; }
+        pre {
+            background: #eee;
+            padding: 10px;
+        }
+
         header {
             background-color: rgb(116, 116, 116);
-            position: fixed;    
-            top: 0;             
-            left: 0;            
-            width: 100%;        
-            padding: 5px 20px; 
-            display: flex;      
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 5px 20px;
+            display: flex;
             align-items: center;
-            z-index: 1000;      
+            z-index: 1000;
         }
+
         .main-content {
             display: flex;
             flex-direction: column;
             gap: 15px;
             padding: 20px;
-            flex: 1; 
+            flex: 1;
         }
 
         #btn {
@@ -50,81 +57,91 @@
             max-height: 40px;
             font-size: 20px;
         }
+
         #pau {
             height: 30px;
             width: 250px;
         }
+
         #fromyt {
             height: 30px;
             width: 100px;
             position: relative;
         }
-        #btnload {
+
+        /* #btnload {
             position: relative;
             left: 20px;
             width: 60px;
             height: 30px;
-        }
-        
+        } */
+
         #subject {
-            width: 70vw;
+            width: 150vw;
             height: 50vh;
         }
-        #resultado {
+
+        #consol {
             width: 100%;
             bottom: 25px;
-            height: 10vh; 
-            max-width: auto; 
-            background-color: #1e1e1e; 
-            color: #ffffff; 
-            font-family: monospace; 
-            padding: 10px; 
-            resize: none; 
+            height: 17vh;
+            max-width: auto;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-family: monospace;
+            padding: 10px;
+            resize: none;
             overflow-y: scroll;
         }
+
         .buto {
             background-color: #333;
             display: flex;
             flex-direction: column;
             gap: 15px;
             padding: 20px;
-            flex: 1; 
-            
+            flex: 1;
+
         }
+
         .info {
             position: relative;
             background-color: #444;
-            width: 50vw;
-            height: 40vh;
+            width: 100%;
+            height: 5vh;
             min-height: 50%;
             max-height: 50%;
             display: flex;
+            justify-content: center;
             align-items: center;
             color: #fff;
         }
+
         .topthings {
-            display: flex;       
-            align-items: center; 
-            gap: 15px;           
+            display: flex;
+            gap: 15px;
             font-size: 40px;
             height: auto;
         }
-        .bts{
+
+        .bts {
             display: grid;
             place-items: center;
         }
 
-        #exfrom, #exto {
+        #exfrom,
+        #exto {
             position: relative;
             width: 100px;
             top: 5px;
             height: 4vh;
             font-size: 25px;
         }
+
         .extractbuttons {
-            display: flex;       
-            align-items: center; 
-            gap: 15px;          
+            display: flex;
+            align-items: center;
+            gap: 15px;
             color: #eee;
             font-size: 30px;
             background-color: #1e1e1e;
@@ -133,11 +150,13 @@
 
 
         #anitta {
-            height: 25vh;
-            position: absolute; 
-            right: 5%;           
+            height: 100%;
+            position: absolute;
+            right: 0%;
         }
-        #insrange, #insbutton{
+
+        #insrange,
+        #insbutton {
             width: 60px;
             height: 5dvh;
             max-height: 30px;
@@ -147,37 +166,91 @@
 
         #curtime {
             position: absolute;
-            top:50%;
-            left: 10%;
+            left: 1%;
+            width: 100px;
+            padding: 10px;
+            background-color: #1e1e1e;
         }
+
         .topbtn {
-            display: flex;       
-            align-items: center; 
-            gap: 20px;          
+            /* display: flex; */
+            display: grid;
+            grid-template-columns: 250px 100px repeat(5, 100px);
+            align-items: center;
+            gap: 20px;
             color: #eee;
 
         }
-        #cb, #cb2, #cbn, #cb3 {
+        .topbtn button {
+            height: 30px;
+        }
+
+        /* #cb,
+        #cb2,
+        #cbn,
+        #cb3 {
             position: relative;
             left: 20px;
             font-size: 25px;
-        }
-        #cbn {
-            left: 30px;
-        }
+        } */
+
+        /* #cbn { */
+            /* left: 30px; */
+        /* } */
+
         input[type="checkbox"] {
             transform: scale(2);
         }
+
+        dialog {
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fundo escuro atrás do pop-up */
+        }
+        #config {
+            background-color: #717171;
+            align-self: center;
+            justify-self: center;
+            width: 50vw;
+        }
+        .configdiv {
+            display: grid;
+            gap: 10px;
+        }
+        #config input {
+            width: 14px;
+            align-items: center;
+        }
+
+        .cdiv {
+            display: grid;
+            grid-template-columns: 25px 20px;
+            align-items: center;
+        }
+        #cbn {
+            color: #FFFFFF;
+            width: 300px;
+            font-size: 20px;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
         <div class="topbtn">
             <select name="Video" id="pau"></select>
-            <input type="text" id="fromyt" value="">
+            <input type="text" id="fromyt" placeholder="from youtube" value="">
             <button id="btnload">Load</button>
-            <div>
+            <button id="configbtn">Config</button>
+
+            <!-- <div>
                 <input type="checkbox" name="useoldnaming" id="cb"><label for="useoldnaming" id="cbn">Old Naming</label>
             </div>
             <div>
@@ -185,7 +258,7 @@
             </div>
             <div>
                 <input type="checkbox" name="useoldnaming" id="cb3"><label for="useoldnaming" id="cbn">PNG</label>
-            </div>
+            </div> -->
         </div>
 
     </header>
@@ -193,71 +266,104 @@
     <main class="main-content">
         <div class="topthings">
             <video autoplay="true" src="" id="subject" controls></video>
-            <div class="info"> 
-                <p id="curtime">0</p>
-                <img src="anitta.jpg" id="anitta">
-            </div>
+        </div>
+        <div class="info">
+            <p id="curtime">0</p>
+            <img src="anitta.jpg" id="anitta">
         </div>
         <div class="buto">
             <div class="extractbuttons">
-                <p><p></p></p>
+                <p>
+                <p></p>
+                </p>
                 <button id="btn">Extract</button>
                 <p>From</p>
-                    <div class="bts">
-                        <input type="From" id="exfrom">
-                        <!-- <input type="button" name="insert" id="insbutton"> -->
-                        <button id="insbutton">Insert</button>
-                    </div>
+                <div class="bts">
+                    <input type="From" id="exfrom">
+                    <!-- <input type="button" name="insert" id="insbutton"> -->
+                    <button id="insbutton">Insert</button>
+                </div>
                 <p>To</p>
-                    <div class="bts">
-                        <input type="To" id="exto">
-                        <input type="number" name="range" id="insrange" min="0" >
-                    </div>
+                <div class="bts">
+                    <input type="To" id="exto">
+                    <input type="number" name="range" id="insrange" min="0">
+                </div>
                 <p id="outtext">Output: ./None</p>
             </div>
-            
+
             <!-- <div class="extractbuttons">
                 <p></p>
                 <input type="checkbox" name="useoldnaming" id="cb"><label for="useoldnaming">Old Naming</label>
                 <input type="checkbox" name="" id="cb"><label for="useoldnaming">Old Naming</label>
             </div> -->
-            <!-- <pre id="resultado">Waiting...</pre> -->
-            <textarea 
-            id="resultado" 
-            readonly 
-            rows="100">
+            <!-- <pre id="consol">Waiting...</pre> -->
+            <textarea id="consol" readonly rows="100">
             </textarea>
         </div>
+
     </main>
+
+
+    <dialog id="config">
+        <div class="configdiv">
+            <div class="cdiv">
+                <input type="checkbox" name="useoldnaming" id="cb" class="cbb"><label for="useoldnaming" id="cbn">Old Naming</label>
+            </div>
+            <div class="cdiv">
+                <input type="checkbox" name="useoldnaming" id="cb2" class="cbb"><label for="useoldnaming" id="cbn">Cut Video</label>
+            </div>
+            <div class="cdiv">
+                <input type="checkbox" name="useoldnaming" id="cb3" class="cbb"><label for="useoldnaming" id="cbn">PNG</label>
+            </div>
+
+        </div>    
+    </dialog>
+
+
+
 
     <script src="renderer.js"></script>
 
     <script>
-            const video = document.querySelector('video');
+        const video = document.querySelector('video');
 
-            video.addEventListener('timeupdate', (event) => {
-                document.getElementById("curtime").innerText = video.currentTime.toFixed(0);
-            });
-            
-            document.getElementById("insbutton").addEventListener('click', (event) => {
-                document.getElementById("exfrom").value = video.currentTime.toFixed(0);
-                document.getElementById("exto").value = parseInt(video.currentTime.toFixed(0)) + parseInt(document.getElementById("insrange").value);
-                
-            })
-            const numberInput = document.getElementById('insrange'); // Or your input ID
+        video.addEventListener('timeupdate', (event) => {
+            document.getElementById("curtime").innerText = video.currentTime.toFixed(3);
+        });
 
-    numberInput.addEventListener('wheel', function(event) {
-        event.preventDefault();
-        let currentValue = parseInt(this.value) || 0;
-        let step = parseInt(this.step) || 1;
-        if (event.deltaY < 0) {
-            this.value = currentValue + step; // Scroll Up = Increase
-        } else {
-            if(this.value == 0) return;
-            this.value = currentValue - step; // Scroll Down = Decrease
-        }
-        this.dispatchEvent(new Event('input'));
-    }, { passive: false }); 
+        document.getElementById("insbutton").addEventListener('click', (event) => {
+            document.getElementById("exfrom").value = video.currentTime.toFixed(0);
+            document.getElementById("exto").value = parseInt(video.currentTime.toFixed(0)) + parseInt(document.getElementById("insrange").value);
+
+        })
+        const numberInput = document.getElementById('insrange'); // Or your input ID
+
+        numberInput.addEventListener('wheel', function (event) {
+            event.preventDefault();
+            let currentValue = parseInt(this.value) || 0;
+            let step = parseInt(this.step) || 1;
+            if (event.deltaY < 0) {
+                this.value = currentValue + step; // Scroll Up = Increase
+            } else {
+                if (this.value == 0) return;
+                this.value = currentValue - step; // Scroll Down = Decrease
+            }
+            this.dispatchEvent(new Event('input'));
+        }, { passive: false });
+
+        const dialog = document.getElementById('config');
+        const obtn = document.getElementById('configbtn');
+        // const cbtn = document.getElementById('ccbtn');
+
+        obtn.addEventListener('click', () => {
+            dialog.showModal(); // Abre o pop-up com fundo bloqueado (backdrop)
+        });
+
+        // cbtn.addEventListener('click', () => {
+        //     dialog.close(); // Fecha o pop-up
+        // });
+
     </script>
 </body>
+
 </html>

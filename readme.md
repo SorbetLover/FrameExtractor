@@ -1,3 +1,15 @@
-Just need ffmpeg installed and probably only works on linux i dont use windows
+Tool that i made to make screencaps easier
 
-# dont forget to run "npm install" 
+# Dependencies
+
+### to compile
+
+- node js
+- electron (unfortunately)
+- basic knowledge
+
+### to use
+
+- FFmpeg
+
+- yt-dlp
