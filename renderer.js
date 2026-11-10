@@ -3,6 +3,9 @@ const fs = require("fs");
 const path = require('path'); // or const path = require('path');
 const { disconnect } = require('process');
 
+function geb(ee){
+    return document.getElementById(ee);
+}
 document.getElementById('btn').addEventListener('click', () => {
     console.log(document.getElementById("cb").checked + " and " + document.getElementById("cb3").checked) 
     document.getElementById("resultado").value = "";
@@ -22,7 +25,7 @@ document.getElementById("btnload").addEventListener("click", () =>{
         document.getElementById("fromyt").value = "";
         alert("Wait a minute until the video is downloaded, it will be loaded automatically.")
     } else {
-        ipcRenderer.send("makeFolder", document.getElementById("pau").value.replace(".mp4", ""));
+        ipcRenderer.send("makeFolder", document.getElementById("pau").value.replace(/\.(webm|mp4|mkv)$/, ""));
         document.getElementById("subject").src = "./input/" + document.getElementById("pau").value;
         document.getElementById("outtext").innerText = "Output: ./" + path.parse(document.getElementById("pau").value).name;        
     }
@@ -83,3 +86,7 @@ ipcRenderer.on("extractframes-progress", (event, texx) => {
         // if(!fs.existsSync("ffmpeg.exe") && process.platform == "win32"){
         //     alert("Install ffmpeg.exe in the root folder");
         // }
+
+geb("openfldr").addEventListener("click", () => {
+    ipcRenderer.send("openfolder", geb("pau").value) 
+});

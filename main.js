@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
+const { app, BrowserWindow, ipcMain, dialog, shell } = require("electron");
 const path = require("path");
 const { exec, spawn } = require("child_process");
 const fs = require("fs");
@@ -161,3 +161,10 @@ ipcMain.on("fromyt", (event, link) => {
         event.reply("fromyt", vname)
     })
 })  
+
+ipcMain.on("openfolder", async (event, folder) => {
+    const err = await shell.openPath(path.resolve(path.join("output", path.parse(folder).name)))
+    if (err) {
+        alert(err);
+    }
+})
