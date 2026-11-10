@@ -11,5 +11,4 @@ Tool that i made to make screencaps easier
 ### to use
 
 - FFmpeg
-
 - yt-dlp
