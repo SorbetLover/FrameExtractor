@@ -8,7 +8,7 @@ function geb(ee){
 }
 document.getElementById('btn').addEventListener('click', () => {
     console.log(document.getElementById("cb").checked + " and " + document.getElementById("cb3").checked) 
-    document.getElementById("resultado").value = "";
+    document.getElementById("consol").value = "";
     ipcRenderer.send("extractframes", 
         document.getElementById("pau").value, 
         document.getElementById("exfrom").value, 
@@ -70,8 +70,8 @@ ipcRenderer.on("recieveVideos", (event, result) =>{
 })
 
 ipcRenderer.on("extractframes-progress", (event, texx) => {
-  document.getElementById("resultado").value += texx;
-  document.getElementById("resultado").scrollTop = document.getElementById("resultado").scrollHeight;
+  document.getElementById("consol").value += texx;
+  document.getElementById("consol").scrollTop = document.getElementById("consol").scrollHeight;
 })
 // dialog.showMessageBox(window,{
         //     type: "warning",

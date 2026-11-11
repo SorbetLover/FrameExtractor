@@ -351,8 +351,8 @@
         });
 
         document.getElementById("insbutton").addEventListener('click', (event) => {
-            document.getElementById("exfrom").value = video.currentTime.toFixed(geb("cb4").checked ? 1 : 0);
-            document.getElementById("exto").value = parseInt(video.currentTime.toFixed(geb("cb4").checked ? 1 : 0)) + parseInt(document.getElementById("insrange").value);
+            document.getElementById("exfrom").value = video.currentTime.toFixed(geb("cb4").checked ? 2 : 0);
+            document.getElementById("exto").value = parseFloat(video.currentTime.toFixed(geb("cb4").checked ? 2 : 0)) + parseFloat(document.getElementById("insrange").value);
 
         })
         const numberInput = document.getElementById('insrange'); // Or your input ID
